@@ -14,13 +14,9 @@
                 "jjjermiah.pixi-vscode",
                 "ms-python.python",
                 "charliermarsh.ruff",
-				"tamasfe.even-better-toml",
-                "mhutchie.git-graph"
+                "tamasfe.even-better-toml"
             ]
         }
-    },
-	"features": {
-		// "ghcr.io/devcontainers/features/common-utils:2": {},
     },
     "mounts": [
         "source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"
