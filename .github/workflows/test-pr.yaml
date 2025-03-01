@@ -14,6 +14,7 @@ jobs:
           filters: |
             color: ./**/color/**
             hello: ./**/hello/**
+            pixi: ./**/pixi/**
 
   test:
     needs: [detect-changes]
