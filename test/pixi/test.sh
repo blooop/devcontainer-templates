@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+cd $(dirname "$0")
 # Import test utilities
 source test-utils.sh
 
