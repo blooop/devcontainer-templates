@@ -9,7 +9,7 @@ Pixi is a package management tool for projects containing Python, C, C++, R, and
 ### Using this Template
 
 1. After creating a dev container with this template, you'll have Pixi already installed and set up.
-2. To start a new Pixi project, run `pixi init` to create a `pixi.toml` file.
+2. To start a new Pixi project, run `pixi init` which creates a `pixi.toml` file. This file is a configuration file for Pixi, used to store your project settings and dependencies.
 3. Add dependencies with `pixi add package_name`.
 4. Run commands in the Pixi environment with `pixi run command`.
 
