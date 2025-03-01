@@ -1,6 +1,6 @@
 {
     "id": "pixi",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "name": "Pixi",
     "description": "A development container with Pixi pre-installed, perfect for Python, C, C++, and other workflows that can benefit from Pixi's package management.",
     "documentationURL": "https://github.com/prefix-dev/pixi",
