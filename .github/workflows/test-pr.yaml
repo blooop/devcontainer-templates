@@ -12,6 +12,7 @@ jobs:
         id: filter
         with:
           filters: |
+            pixi: ./**/pixi/**
 
   test:
     needs: [detect-changes]
