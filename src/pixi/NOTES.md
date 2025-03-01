@@ -19,9 +19,6 @@ For more information on using Pixi, check out the [Pixi documentation](https://p
 
 - **pixiVersion**: The version of Pixi to install (default: v0.41.4)
 - **projectName**: The name of your project. This value is used in the devcontainer configuration to set container names, labels, and related identifiers, ensuring consistency across the development environment.
-- **installPythonExtensions**: Whether to install Python and Ruff VS Code extensions
-- **installCopilot**: Whether to install GitHub Copilot extension
-- **includeDockerInDocker**: Whether to include Docker in Docker feature
 
 ### Common Tasks
 

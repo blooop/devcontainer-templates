@@ -11,17 +11,16 @@
         "vscode": {
             "settings": {},
             "extensions": [
-                // Python extensions are conditionally included
-                "${templateOption:installPythonExtensions ? 'ms-python.python' : ''}",
-                "${templateOption:installPythonExtensions ? 'charliermarsh.ruff' : ''}",
-                // GitHub Copilot is conditionally included
-                "${templateOption:installCopilot ? 'GitHub.copilot' : ''}"
-            ].filter(Boolean)
+                "jjjermiah.pixi-vscode",
+                "ms-python.python",
+                "charliermarsh.ruff",
+				"tamasfe.even-better-toml",
+                "mhutchie.git-graph"
+            ]
         }
     },
-    "features": {
-        // Docker in Docker is conditionally included
-        "${templateOption:includeDockerInDocker ? 'ghcr.io/devcontainers/features/docker-in-docker:2' : ''}"
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {},
     },
     "mounts": [
         "source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"

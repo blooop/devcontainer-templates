@@ -1,6 +1,6 @@
 {
     "id": "pixi",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Pixi",
     "description": "A development container with Pixi pre-installed, perfect for Python, C, C++, and other workflows that can benefit from Pixi's package management.",
     "documentationURL": "https://github.com/prefix-dev/pixi",
@@ -16,21 +16,6 @@
             "type": "string",
             "default": "pixi-project",
             "description": "The name of your project."
-        },
-        "installPythonExtensions": {
-            "type": "boolean",
-            "default": true,
-            "description": "Install Python and Ruff extensions for VS Code."
-        },
-        "installCopilot": {
-            "type": "boolean",
-            "default": false,
-            "description": "Install GitHub Copilot extension for VS Code."
-        },
-        "includeDockerInDocker": {
-            "type": "boolean",
-            "default": true,
-            "description": "Include Docker in Docker feature."
         }
     },
     "platforms": ["linux"]
