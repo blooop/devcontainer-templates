@@ -14,8 +14,7 @@
                 "jjjermiah.pixi-vscode",
                 "ms-python.python",
                 "charliermarsh.ruff",
-				"tamasfe.even-better-toml",
-                "mhutchie.git-graph"
+				"tamasfe.even-better-toml"
             ]
         }
     },
