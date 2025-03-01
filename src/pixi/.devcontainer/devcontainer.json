@@ -18,9 +18,6 @@
             ]
         }
     },
-    "features": {
-        // "ghcr.io/devcontainers/features/common-utils:2": {},
-    },
     "mounts": [
         "source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"
     ],
