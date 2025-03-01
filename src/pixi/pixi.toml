@@ -1,0 +1,4 @@
+[project]
+channels = ["conda-forge"]
+name = "${templateOption:projectName}"
+platforms = ["linux-64"]

@@ -20,10 +20,10 @@
         }
     },
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {},
+		// "ghcr.io/devcontainers/features/common-utils:2": {},
     },
     "mounts": [
         "source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"
     ],
-    "postCreateCommand": "sudo chown vscode .pixi && pixi install"
+    "postCreateCommand": "sudo chown vscode .pixi && if [ ! -f pixi.toml ]; then cp /workspaces/${templateOption:projectName}/pixi.toml .; fi && pixi install"
 }
