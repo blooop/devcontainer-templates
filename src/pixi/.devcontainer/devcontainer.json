@@ -1,0 +1,30 @@
+{
+    "name": "${templateOption:projectName}",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "PIXI_VERSION": "${templateOption:pixiVersion}"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                // Python extensions are conditionally included
+                "${templateOption:installPythonExtensions ? 'ms-python.python' : ''}",
+                "${templateOption:installPythonExtensions ? 'charliermarsh.ruff' : ''}",
+                // GitHub Copilot is conditionally included
+                "${templateOption:installCopilot ? 'GitHub.copilot' : ''}"
+            ].filter(Boolean)
+        }
+    },
+    "features": {
+        // Docker in Docker is conditionally included
+        "${templateOption:includeDockerInDocker ? 'ghcr.io/devcontainers/features/docker-in-docker:2' : ''}"
+    },
+    "mounts": [
+        "source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"
+    ],
+    "postCreateCommand": "sudo chown vscode .pixi && pixi install"
+}
