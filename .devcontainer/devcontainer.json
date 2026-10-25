@@ -11,8 +11,10 @@
         "ghcr.io/devcontainers/features/node:1": {
             "version": "lts"
         },
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+        "ghcr.io/devcontainers/features/docker-in-docker:4": {}
     },
+
+    // docker-in-docker:2 has no Moby packages for Ubuntu 26.04; :4 does.
 
     // The two bind mounts below fail if their host directory is missing.
     "initializeCommand": "mkdir -p \"$HOME/.claude\" \"$HOME/.config/gh\"",
