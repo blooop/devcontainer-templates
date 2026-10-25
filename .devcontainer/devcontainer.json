@@ -40,7 +40,10 @@
         "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind"
     ],
 
-    "postCreateCommand": "npm install -g @devcontainers/cli",
+    // devpod runs lifecycle hooks with the PATH from /etc/environment, which
+    // drops the node feature's bin dir ("npm: command not found", exit 127;
+    // remoteEnv PATH does not help), so the hook names it itself.
+    "postCreateCommand": "PATH=/usr/local/share/nvm/current/bin:$PATH npm install -g @devcontainers/cli",
 
     "name": "devcontainer-templates"
 }
