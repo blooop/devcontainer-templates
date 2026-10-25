@@ -1,16 +1,44 @@
-// More info: https://containers.dev/implementors/json_reference/
 {
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
-	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
-	},
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"mads-hartmann.bash-ide-vscode",
-				"dbaeumer.vscode-eslint"
-			]
-		}
-	},
-	"postCreateCommand": "npm install -g @devcontainers/cli"
+    // The shared base image: pixi, the claude-code feature, the vscode user,
+    // and a CA bundle without emSign ECC Root CA - G3 (CVE-2026-111943).
+    // This repo has no pixi project; it needs Node for the devcontainer CLI
+    // and docker to build and test what it publishes; the features add both.
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+
+    // The two bind mounts below fail if their host directory is missing.
+    "initializeCommand": "mkdir -p \"$HOME/.claude\" \"$HOME/.config/gh\"",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mads-hartmann.bash-ide-vscode",
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    },
+
+    "containerEnv": {
+        "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
+        "XDG_CONFIG_HOME": "/home/vscode/.config",
+        "XDG_CACHE_HOME": "/home/vscode/.cache",
+        "XDG_DATA_HOME": "/home/vscode/.local/share"
+    },
+
+    "mounts": [
+        "source=${localEnv:HOME}/.config/gh,target=/home/vscode/.config/gh,type=bind",
+        "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind"
+    ],
+
+    "postCreateCommand": "npm install -g @devcontainers/cli",
+
+    "name": "devcontainer-templates"
 }
