@@ -1,12 +1,11 @@
 {
     "name": "${templateOption:projectName}",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": "..",
-        "args": {
-            "PIXI_VERSION": "${templateOption:pixiVersion}"
-        }
-    },
+    // Ubuntu 26.04 with pixi, git-lfs, the vscode user, and a CA bundle
+    // without emSign ECC Root CA - G3 (CVE-2026-111943).
+    "image": "ghcr.io/blooop/python_template/devcontainer:latest",
+    // The image's metadata bind-mounts ~/.claude, which fails if the host
+    // directory is missing.
+    "initializeCommand": "mkdir -p \"$HOME/.claude\"",
     "customizations": {
         "vscode": {
             "settings": {},
@@ -21,5 +20,7 @@
     "mounts": [
         "source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"
     ],
-    "postCreateCommand": "sudo chown vscode .pixi && if [ ! -f pixi.toml ]; then cp /workspaces/${templateOption:projectName}/pixi.toml .; fi && pixi install"
+    // --frozen installs what pixi.lock says and never rewrites it, so the
+    // create leaves git status clean. Without a lock, pixi install makes one.
+    "postCreateCommand": "sudo chown vscode .pixi && if [ -f pixi.lock ]; then pixi install --frozen; elif [ -f pixi.toml ]; then pixi install; fi"
 }
