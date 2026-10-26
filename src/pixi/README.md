@@ -7,7 +7,6 @@ A development container with Pixi pre-installed, perfect for Python, C, C++, and
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| pixiVersion | The version of Pixi to install. | string | v0.41.4 |
 | projectName | The name of your project. | string | pixi-project |
 
 ## Pixi Dev Container Template
@@ -20,7 +19,7 @@ Pixi is a package management tool for projects containing Python, C, C++, R, and
 
 ### Using this Template
 
-1. After creating a dev container with this template, you'll have Pixi already installed and set up.
+1. After creating a dev container with this template, you'll have Pixi already installed and set up. The container uses the `ghcr.io/blooop/python_template/devcontainer` image (Ubuntu 26.04, Pixi 0.83.0). The Pixi version comes from that image.
 2. To start a new Pixi project, run `pixi init` which creates a `pixi.toml` file. This file is a configuration file for Pixi, used to store your project settings and dependencies.
 3. Add dependencies with `pixi add package_name`.
 4. Run commands in the Pixi environment with `pixi run command`.
@@ -29,8 +28,19 @@ For more information on using Pixi, check out the [Pixi documentation](https://p
 
 ### Template Options
 
-- **pixiVersion**: The version of Pixi to install (default: v0.41.4)
 - **projectName**: The name of your project. This value is used in the devcontainer configuration to set container names, labels, and related identifiers, ensuring consistency across the development environment.
+
+### What runs when the container is created
+
+- If `pixi.lock` exists, `pixi install --frozen` installs it and does not change it.
+- If only `pixi.toml` exists, `pixi install` installs it and writes `pixi.lock`.
+- If neither exists, nothing is installed.
+
+The image bind-mounts `~/.claude` from the host, so `initializeCommand` creates that directory first.
+
+### Upgrading from 1.x
+
+Version 2.0.0 removes the `pixiVersion` option. Remove `pixiVersion` from the `--template-args` of your `devcontainer templates apply` command.
 
 ### Common Tasks
 

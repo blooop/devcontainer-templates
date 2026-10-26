@@ -9,7 +9,7 @@ This repository contains a collection of [Development Container](https://contain
 **Pixi** is a fast, cross-platform package management tool focused on Python, C, C++, and other scientific workflows. This template provides a development container with Pixi pre-installed, making it easy to manage dependencies and environments.
 
 #### Features
-- Pre-installed Pixi package manager
+- Ubuntu 26.04 image `ghcr.io/blooop/python_template/devcontainer` with Pixi 0.83.0 and git-lfs
 - Configured for Python, C, and C++ development
 - Bash completion for Pixi commands
 - VSCode extensions for Python and Pixi development
@@ -37,15 +37,14 @@ This will start a new VSCode window with the development container running, with
 
 #### Template Options
 
-The Pixi template accepts the following options:
+The Pixi template accepts the following option (version 2.0.0 removed `pixiVersion`; the image sets the Pixi version):
 
-- `pixiVersion`: The version of Pixi to install (default: v0.41.4)
 - `projectName`: The name of your project (default: pixi-project)
 
 To specify options when applying the template:
 
 ```bash
-devcontainer templates apply -t ghcr.io/blooop/devcontainer-templates/pixi:latest --project-name my-awesome-project --pixi-version v0.41.4
+devcontainer templates apply -t ghcr.io/blooop/devcontainer-templates/pixi:latest --template-args '{"projectName": "my-awesome-project"}'
 ```
 
 ## Contributing

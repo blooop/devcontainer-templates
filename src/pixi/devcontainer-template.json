@@ -1,17 +1,12 @@
 {
     "id": "pixi",
-    "version": "1.0.4",
+    "version": "2.0.0",
     "name": "Pixi",
     "description": "A development container with Pixi pre-installed, perfect for Python, C, C++, and other workflows that can benefit from Pixi's package management.",
     "documentationURL": "https://github.com/prefix-dev/pixi",
     "publisher": "ags",
     "licenseURL": "https://github.com/prefix-dev/pixi/blob/main/LICENSE",
     "options": {
-        "pixiVersion": {
-            "type": "string",
-            "default": "v0.41.4",
-            "description": "The version of Pixi to install."
-        },
         "projectName": {
             "type": "string",
             "default": "pixi-project",
